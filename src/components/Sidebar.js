@@ -110,7 +110,7 @@ export default (props = {}) => {
                 <NavItem title="İlanlarım" link={Routes.IlanListesi.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="yoneticiIslemleri/" title="Yönetici Paneli" icon={faTable}>
-                <NavItem title="Kategori Listesi" link={Routes.BootstrapTables.path} />
+                <NavItem title="Kategori Listesi" link={Routes.BasvuruListesi.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="raporlar/" title="Raporlar" icon={faTable}>
                 <NavItem title="En Çok Aranan Özellikler" link={Routes.RaporEnCokArananlar.path} />

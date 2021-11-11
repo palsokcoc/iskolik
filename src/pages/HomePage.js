@@ -9,7 +9,6 @@ import YeniIlan from "./YeniIlan";
 import IlanAra from "./IlanAra";
 import RaporEnCokArananlar from "./tables/raporEnCokArananlar";
 import RaporEnCokBulunanlar from "./tables/raporEnCokBulunanlar";
-import BootstrapTables from "./tables/BootstrapTables";
 import IlanListesi from "./tables/IlanListesi";
 import BasvuruListesi from "./tables/BasvuruListesi";
 import Signin from "./examples/Signin";
@@ -109,7 +108,6 @@ export default () => (
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />
     <RouteWithSidebar exact path={Routes.RaporEnCokArananlar.path} component={RaporEnCokArananlar} />
     <RouteWithSidebar exact path={Routes.RaporEnCokBulunanlar.path} component={RaporEnCokBulunanlar} />
-    <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
     <RouteWithSidebar exact path={Routes.IlanListesi.path} component={IlanListesi} />
     <RouteWithSidebar exact path={Routes.BasvuruListesi.path} component={BasvuruListesi} />
 
