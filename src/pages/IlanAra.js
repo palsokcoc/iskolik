@@ -1,16 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen, faCartArrowDown, faChartPie, faChevronDown, faClipboard, faCommentDots, faFileAlt, faPlus, faRocket, faStore } from '@fortawesome/free-solid-svg-icons';
-import { Col, Row, Button, Dropdown } from '@themesberg/react-bootstrap';
-import { ChoosePhotoWidget, ProfileCardWidget } from "../components/Widgets";
-import { IlanForm } from "../components/Forms";
+import { Col, Row, Button } from '@themesberg/react-bootstrap';
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
-import { Form, InputGroup } from '@themesberg/react-bootstrap';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Form } from '@themesberg/react-bootstrap';
 import { IlanListesiAramaSonucuTable } from "../components/Tables";
-import Profile3 from "../assets/img/team/profile-picture-3.jpg";
-
 
 export default () => {
   return (

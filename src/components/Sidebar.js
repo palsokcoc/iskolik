@@ -4,12 +4,11 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { Routes } from "../routes";
-import ThemesbergLogo from "../assets/img/themesberg.svg";
 import ReactHero from "../assets/img/logo.jpeg";
 import ProfilePicture from "../assets/img/profiles/Badi_Ekrem.jfif";
 
@@ -119,9 +118,7 @@ export default (props = {}) => {
               </CollapsableNavItem>
 
               <NavItem title="Çıkış" link={Routes.Signin.path} />
-
-
-           </Nav>
+          </Nav>
           </div>
         </SimpleBar>
       </CSSTransition>

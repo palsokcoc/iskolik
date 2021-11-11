@@ -6,7 +6,7 @@ import { Breadcrumb } from '@themesberg/react-bootstrap';
 import moment from "moment-timezone";
 import Datetime from "react-datetime";
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { Col, Row, Card, Form, Button, InputGroup } from '@themesberg/react-bootstrap';
+import { Col, Row, Form, Button, InputGroup } from '@themesberg/react-bootstrap';
 
 import { EnCokArananOzelliklerTable } from "../../components/Tables";
 

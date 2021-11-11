@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faExternalLinkAlt, faTimesCircle, faCheckCircle, faCalendarAlt, faCodeBranch, faShoppingCart, faFolder, faMapMarkedAlt, faPager, faFileCode, faDownload } from "@fortawesome/free-solid-svg-icons";
-import { faBootstrap, faGithub, faJs, faReact, faSass } from "@fortawesome/free-brands-svg-icons";
+import { faBootstrap, faJs, faReact, faSass } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Card, Image, Button, Container, ListGroup, Tooltip, OverlayTrigger, Form, Navbar, Nav, Badge } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -9,7 +9,6 @@ import Code from "../components/CodeEditor";
 import GitHubButton from 'react-github-btn';
 
 import { Routes } from "../routes";
-import ThemesbergLogoIcon from "../assets/img/themesberg.svg";
 import ThemesbergLogo from "../assets/img/themesberg-logo.svg";
 import MockupPresentation from "../assets/img/mockup-presentation.png";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
@@ -93,7 +92,6 @@ export default () => {
                 <Nav.Link as={HashLink} to="#pages">Pages</Nav.Link>
                 <Nav.Link as={HashLink} to="#folder" className="d-sm-none d-xl-inline">Folder Structure</Nav.Link>
                 <Nav.Link as={HashLink} to="#getting-started">Getting Started</Nav.Link>
-                <Nav.Link as={HashLink} to="#download">Upgrade to Pro</Nav.Link>
               </Nav>
             </Navbar.Collapse>
             <Button as={HashLink} to="#download" variant="outline-white" className="ms-3"><FontAwesomeIcon icon={faDownload} className="me-1" /> Download</Button>
@@ -114,12 +112,6 @@ export default () => {
                 <GitHubButton className="mt-lg-2" href="https://github.com/themesberg/volt-react-dashboard" data-size="large" data-show-count="true" aria-label="Star themesberg/volt-react-dashboard on GitHub">Star</GitHubButton>
               </div>
               <div className="d-flex justify-content-center flex-column mb-6 mb-lg-5 mt-5">
-                <div className="text-center">
-                  <a href="https://themesberg.com" target="_blank">
-                    <Image src={ThemesbergLogoIcon} height={25} width={25} className="mb-3" alt="Themesberg Logo" />
-                    <p className="text-muted font-small m-0">A Themesberg production</p>
-                  </a>
-                </div>
               </div>
             </Col>
           </Row>
@@ -367,17 +359,6 @@ export default () => {
       </section>
       <section className="section section-lg bg-white" id="download">
         <Container>
-          <Row>
-            <Col xs={12} lg={8}>
-              <h2 className="fw-light mb-3">Download or upgrade to pro</h2>
-              <p className="lead mb-4 me-lg-6">Do you want to take React development to the next level? Check out the premium version of Volt React Dashboard in the following comparison table.</p>
-            </Col>
-            <Col xs={12} lg={4}>
-              <div className="github-big-icon">
-                <FontAwesomeIcon icon={faGithub} />
-              </div>
-            </Col>
-          </Row>
           <Row className="mt-6">
             <Col xs={12} md={6} lg={4} className="mb-5 mb-lg-0">
               <Card border="light" className="p-4">

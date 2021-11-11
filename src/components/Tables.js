@@ -351,13 +351,8 @@ export const CommandsTable = () => {
 
 
 export const IlanListesiTable = () => {
-  const toplamKayitSayisi = isIlanlari.length;
-
   const TableRow = (props) => {
     const { ilanId, unvan, yayinTarihi, sonBasvuruTarihi, durum } = props;
-    const durumVariant = durum === "Paid" ? "success"
-      : durum === "Due" ? "warning"
-        : durum === "Canceled" ? "danger" : "primary";
 
     return (
       <tr>
@@ -382,7 +377,7 @@ export const IlanListesiTable = () => {
           </span>
         </td>
         <td>
-          <span className={`fw-normal text-${durumVariant}`}>
+          <span className="fw-normal">
             {durum}
           </span>
         </td>
@@ -454,13 +449,8 @@ export const IlanListesiTable = () => {
 };
 
 export const IlanListesiAramaSonucuTable = () => {
-  const toplamKayitSayisi = isIlanlariAramaSonucu.length;
-
   const TableRow = (props) => {
     const { ilanId, kurum, unvan, yayinTarihi, sonBasvuruTarihi, durum } = props;
-    const durumVariant = durum === "Paid" ? "success"
-      : durum === "Due" ? "warning"
-        : durum === "Canceled" ? "danger" : "primary";
 
     return (
       <tr>
@@ -490,7 +480,7 @@ export const IlanListesiAramaSonucuTable = () => {
           </span>
         </td>
         <td>
-          <span className={`fw-normal text-${durumVariant}`}>
+          <span className="fw-normal">
             {durum}
           </span>
         </td>
@@ -560,8 +550,6 @@ export const IlanListesiAramaSonucuTable = () => {
 };
 
 export const BasvuruListesiTable = () => {
-  const toplamBasvuruSayisi = basvurular.length;
-
   const TableRow = (props) => {
     const { ilanId, kurum, unvan, basvuruTarihi, durum } = props;
 
@@ -657,7 +645,6 @@ export const BasvuruListesiTable = () => {
 };
 
 export const EnCokArananOzelliklerTable = () => {
-  const toplamKayitSayisi = enCokArananOzellikler.length;
 
   const TableRow = (props) => {
     const { ozellik, adet } = props;

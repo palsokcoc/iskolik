@@ -9,7 +9,6 @@ export const Routes = {
     IlanAra: { path: "/ilanAra" },
     RaporEnCokArananlar: { path: "/tables/raporEnCokArananlar" },
     RaporEnCokBulunanlar: { path: "/raporEnCokBulunanlar" },
-    Upgrade: { path: "/upgrade" },
     BootstrapTables: { path: "/tables/bootstrap-tables" },
     IlanListesi: { path: "/tables/ilanListesi" },
     BasvuruListesi: { path: "/tables/basvuruListesi" },
