@@ -3,9 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Routes } from "../routes";
 
 // pages
-import Presentation from "./Presentation";
 import DashboardOverview from "./dashboard/DashboardOverview";
-import Transactions from "./Transactions";
 import Settings from "./Settings";
 import YeniIlan from "./YeniIlan";
 import IlanAra from "./IlanAra";
@@ -105,7 +103,6 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
 export default () => (
   <Switch>
-    <RouteWithLoader exact path={Routes.Presentation.path} component={Presentation} />
     <RouteWithLoader exact path={Routes.Signin.path} component={Signin} />
     <RouteWithLoader exact path={Routes.Signup.path} component={Signup} />
     <RouteWithLoader exact path={Routes.ForgotPassword.path} component={ForgotPassword} />
@@ -116,7 +113,6 @@ export default () => (
 
     {/* pages */}
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
-    <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
     <RouteWithSidebar exact path={Routes.YeniIlan.path} component={YeniIlan} />
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />

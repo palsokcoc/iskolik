@@ -1,6 +1,5 @@
 
 import OverviewImg from "../assets/img/pages/overview.jpg";
-import TransactionsImg from "../assets/img/pages/transactions.jpg";
 import SettingsImg from "../assets/img/pages/settings.jpg";
 import SignInImg from "../assets/img/pages/sign-in.jpg";
 import SignUpImg from "../assets/img/pages/sign-up.jpg";
@@ -19,12 +18,6 @@ export default [
         "name": "Overview",
         "image": OverviewImg,
         "link": Routes.DashboardOverview.path
-    },
-    {
-        "id": 2,
-        "name": "Transactions",
-        "image": TransactionsImg,
-        "link": Routes.Transactions.path
     },
     {
         "id": 3,

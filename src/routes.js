@@ -1,9 +1,7 @@
 
 export const Routes = {
     // pages
-    Presentation: { path: "/" },
     DashboardOverview: { path: "/dashboard/overview" },
-    Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
     YeniIlan: { path: "/yeniIlan" },
     IlanAra: { path: "/ilanAra" },

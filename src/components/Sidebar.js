@@ -96,7 +96,7 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="İşkolik" link={Routes.Presentation.path} image={ReactHero} />
+              <NavItem title="İşkolik" link={Routes.Settings.path} image={ReactHero} />
               <Dropdown.Divider className="my-3 border-indigo" />
 
               <NavItem title="Hesap İşlemleri" icon={faCog} link={Routes.Settings.path} />
