@@ -3,14 +3,10 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faChartArea, faChartBar, faChartLine, faFlagUsa, faFolderOpen, faGlobeEurope, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import { faAngular, faBootstrap, faReact, faVuejs } from "@fortawesome/free-brands-svg-icons";
-import { Col, Row, Card, Image, Button, ListGroup, ProgressBar } from '@themesberg/react-bootstrap';
-import { CircleChart, BarChart, SalesValueChart, SalesValueChartphone } from "./Charts";
+import { Col, Row, Card, Image, Button, ProgressBar } from '@themesberg/react-bootstrap';
 
 import Profile1 from "../assets/img/profiles/Badi_Ekrem.jfif";
 import ProfileCover from "../assets/img/profile-cover.jpg";
-
-import teamMembers from "../data/teamMembers";
-
 
 export const ProfileCardWidget = () => {
   return (
@@ -89,121 +85,6 @@ export const CounterWidget = (props) => {
             </div>
           </Col>
         </Row>
-      </Card.Body>
-    </Card>
-  );
-};
-
-export const CircleChartWidget = (props) => {
-  const { title, data = [] } = props;
-  const series = data.map(d => d.value);
-
-  return (
-    <Card border="light" className="shadow-sm">
-      <Card.Body>
-        <Row className="d-block d-xl-flex align-items-center">
-          <Col xs={12} xl={5} className="text-xl-center d-flex align-items-center justify-content-xl-center mb-3 mb-xl-0">
-            <CircleChart series={series} />
-          </Col>
-          <Col xs={12} xl={7} className="px-xl-0">
-            <h5 className="mb-3">{title}</h5>
-
-            {data.map(d => (
-              <h6 key={`circle-element-${d.id}`} className="fw-normal text-gray">
-                <FontAwesomeIcon icon={d.icon} className={`icon icon-xs text-${d.color} w-20 me-1`} />
-                {` ${d.label} `}{`${d.value}%`}
-              </h6>
-            ))}
-          </Col>
-        </Row>
-      </Card.Body>
-    </Card>
-  );
-};
-
-export const BarChartWidget = (props) => {
-  const { title, value, percentage, data = [] } = props;
-  const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const series = data.map(d => d.value);
-  const percentageIcon = percentage < 0 ? faAngleDown : faAngleUp;
-  const percentageColor = percentage < 0 ? "text-danger" : "text-success";
-
-  return (
-    <Card border="light" className="shadow-sm">
-      <Card.Body className="d-flex flex-row align-items-center flex-0 border-bottom">
-        <div className="d-block">
-          <h6 className="fw-normal text-gray mb-2">{title}</h6>
-          <h3>{value}</h3>
-          <small className="mt-2">
-            <FontAwesomeIcon icon={percentageIcon} className={`${percentageColor} me-1`} />
-            <span className={`${percentageColor} fw-bold`}>
-              {percentage}%
-            </span>
-          </small>
-        </div>
-        <div className="d-block ms-auto">
-          {data.map(d => (
-            <div key={`bar-element-${d.id}`} className="d-flex align-items-center text-end mb-2">
-              <span className={`shape-xs rounded-circle bg-${d.color} me-2`} />
-              <small className="fw-normal">{d.label}</small>
-            </div>
-          ))}
-        </div>
-      </Card.Body>
-      <Card.Body className="p-2">
-        <BarChart labels={labels} series={series} />
-      </Card.Body>
-    </Card>
-  );
-};
-
-export const TeamMembersWidget = () => {
-  const TeamMember = (props) => {
-    const { name, statusKey, image, icon, btnText } = props;
-    const status = {
-      online: { color: "success", label: "Online" },
-      inMeeting: { color: "warning", label: "In a meeting" },
-      offline: { color: "danger", label: "Offline" }
-    };
-
-    const statusColor = status[statusKey] ? status[statusKey].color : 'danger'
-      , statusLabel = status[statusKey] ? status[statusKey].label : 'Offline';
-
-    return (
-      <ListGroup.Item className="px-0">
-        <Row className="align-items-center">
-          <Col className="col-auto">
-            <a href="#top" className="user-avatar">
-              <Image src={image} className="rounded-circle" />
-            </a>
-          </Col>
-          <Col className="ms--2">
-            <h4 className="h6 mb-0">
-              <a href="#!">{name}</a>
-            </h4>
-            <span className={`text-${statusColor}`}>● </span>
-            <small>{statusLabel}</small>
-          </Col>
-          <Col className="col-auto">
-            <Button variant="tertiary" size="sm">
-              <FontAwesomeIcon icon={icon} className="me-1" /> {btnText}
-            </Button>
-          </Col>
-        </Row>
-      </ListGroup.Item>
-    );
-  };
-
-  return (
-    <Card border="light" className="shadow-sm">
-      <Card.Header className="border-bottom border-light d-flex justify-content-between">
-        <h5 className="mb-0">Team members</h5>
-        <Button variant="secondary" size="sm">See all</Button>
-      </Card.Header>
-      <Card.Body>
-        <ListGroup className="list-group-flush list my--3">
-          {teamMembers.map(tm => <TeamMember key={`team-member-${tm.id}`} {...tm} />)}
-        </ListGroup>
       </Card.Body>
     </Card>
   );
@@ -325,7 +206,6 @@ export const SalesValueWidget = (props) => {
         </div>
       </Card.Header>
       <Card.Body className="p-2">
-        <SalesValueChart />
       </Card.Body>
     </Card>
   );
@@ -358,7 +238,6 @@ export const SalesValueWidgetPhone = (props) => {
         </div>
       </Card.Header>
       <Card.Body className="p-2">
-        <SalesValueChartphone />
       </Card.Body>
     </Card>
   );
