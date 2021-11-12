@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from '@themesberg/react-bootstrap';
-import { ProfileCardWidget } from "../components/Widgets";
+import { ProfileCardWidget,CounterWidget } from "../components/Widgets";
 import { HesapBilgileriForm } from "../components/Forms";
 
 export default () => {
@@ -15,6 +15,7 @@ export default () => {
           <Row>
             <Col xs={12}>
               <ProfileCardWidget />
+              <CounterWidget/>
             </Col>
           </Row>
         </Col>
