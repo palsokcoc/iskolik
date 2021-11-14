@@ -86,7 +86,7 @@ export default (props = {}) => {
                 </div>
                 <div className="d-block">
                   <h6>Hi, Jane</h6>
-                  <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark">
+                  <Button as={Link} variant="secondary" size="xs" to={Routes.KullaniciGiris.path} className="text-dark">
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
                   </Button>
                 </div>
@@ -96,10 +96,10 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="İşkolik" link={Routes.Settings.path} image={ReactHero} />
+              <NavItem title="İşkolik" link={Routes.HesapBilgileri.path} image={ReactHero} />
               <Dropdown.Divider className="my-3 border-indigo" />
 
-              <NavItem title="Hesap İşlemleri" icon={faCog} link={Routes.Settings.path} />
+              <NavItem title="Hesap İşlemleri" icon={faCog} link={Routes.HesapBilgileri.path} />
               <CollapsableNavItem eventKey="basvuruIslemleri/" title="Bireysel İşlemleri" icon={faTable}>
                 <NavItem title="İlan Ara" link={Routes.IlanAra.path} />
                 <NavItem title="Başvurularım" link={Routes.BasvuruListesi.path} />
@@ -108,16 +108,18 @@ export default (props = {}) => {
               <CollapsableNavItem eventKey="ilanIslemleri/" title="Kurumsal İşlemler" icon={faTable}>
                 <NavItem title="Yeni İlan" link={Routes.YeniIlan.path} />
                 <NavItem title="İlanlarım" link={Routes.IlanListesi.path} />
+                <NavItem title="Eleman Ara" link={Routes.ElemanAra.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="yoneticiIslemleri/" title="Yönetici Paneli" icon={faTable}>
-                <NavItem title="Kategori Listesi" link={Routes.BasvuruListesi.path} />
+                <NavItem title="Kategori Listesi" link={Routes.KategoriListesi.path} />
+                <NavItem title="Yeni Kategori" link={Routes.YeniKategori.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="raporlar/" title="Raporlar" icon={faTable}>
                 <NavItem title="En Çok Aranan Özellikler" link={Routes.RaporEnCokArananlar.path} />
                 <NavItem title="En Çok Bulunan Özellikler" link={Routes.RaporEnCokBulunanlar.path} />
               </CollapsableNavItem>
 
-              <NavItem title="Çıkış" link={Routes.Signin.path} />
+              <NavItem title="Çıkış" link={Routes.KullaniciGiris.path} />
           </Nav>
           </div>
         </SimpleBar>

@@ -163,14 +163,13 @@ export const HesapBilgileriForm = () => {
 };
 
 
-export const IlanForm = () => {
+const IlanForm = () => {
   const [birthday, setBirthday] = useState("");
 
   return (
     <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
         <Form>
-        <h5 className="mb-4">İlan Detayları</h5>
         <Row>
           <Col md={3} className="mb-3">
             <Form.Label column="true">Ünvan:</Form.Label>
@@ -321,13 +320,147 @@ export const IlanForm = () => {
               </Form.Group>
             </Col>
           </Row>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
 
+
+export const YeniIlanForm = () => {
+  const [birthday, setBirthday] = useState("");
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form>
+          <IlanForm/>
           <div className="mt-3">
             <Button variant="primary" type="submit">Kaydet</Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Button variant="primary" type="submit">Yayınla</Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Button variant="danger" type="submit">Sil</Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+export const IlanDetayForm = () => {
+  const [birthday, setBirthday] = useState("");
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form>
+          <h5 style={{"text-align": "center"}}>İlan No: 99999</h5>
+          <IlanForm/>
+          <div className="mt-3">
+            <Button variant="primary" type="submit">Başvur</Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+
+const KategoriForm = () => {
+  const [birthday, setBirthday] = useState("");
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form>
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Ad:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="ad">
+                  <Form.Control required type="text" placeholder="" />
+                </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Açıklama:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="aciklama">
+                  <Form.Control required placeholder=""/>
+                </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Ata Kategori:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="ataKategori">
+                  <Form.Control required placeholder=""/>
+                </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Durum:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="durum">
+                  <Form.Control placeholder=""/>
+                </Form.Group>
+            </Col>
+          </Row>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+export const YeniKategoriForm = () => {
+  const [birthday, setBirthday] = useState("");
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form>
+          <KategoriForm/>
+          <div className="mt-3">
+            <Button variant="primary" type="submit">Kaydet</Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Button variant="primary" type="submit">Yayınla</Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Button variant="danger" type="submit">Sil</Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+export const KategoriDetayForm = () => {
+  const [birthday, setBirthday] = useState("");
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form>
+          <h5 style={{"text-align": "center"}}>Kategori No: 99999</h5>
+          <KategoriForm/>
+          <div className="mt-3">
+          <Button variant="primary" type="submit">Düzelt</Button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Button variant="primary" type="submit">Sil</Button>
           </div>
         </Form>
       </Card.Body>

@@ -4,15 +4,20 @@ import { Routes } from "../routes";
 
 // pages
 import DashboardOverview from "./dashboard/DashboardOverview";
-import Settings from "./Settings";
+import HesapBilgileri from "./HesapBilgileri";
 import YeniIlan from "./YeniIlan";
+import IlanDetay from "./IlanDetay";
 import IlanAra from "./IlanAra";
-import RaporEnCokArananlar from "./tables/raporEnCokArananlar";
-import RaporEnCokBulunanlar from "./tables/raporEnCokBulunanlar";
+import ElemanAra from "./ElemanAra";
+import YeniKategori from "./YeniKategori";
+import KategoriDetay from "./KategoriDetay";
+import RaporEnCokArananlar from "./tables/RaporEnCokArananlar";
+import RaporEnCokBulunanlar from "./tables/RaporEnCokBulunanlar";
 import IlanListesi from "./tables/IlanListesi";
 import BasvuruListesi from "./tables/BasvuruListesi";
-import Signin from "./examples/Signin";
-import Signup from "./examples/Signup";
+import KullaniciGiris from "./KullaniciGiris";
+import KullaniciKayit from "./KullaniciKayit";
+import KategoriListesi from "./tables/KategoriListesi";
 import ForgotPassword from "./examples/ForgotPassword";
 import ResetPassword from "./examples/ResetPassword";
 import Lock from "./examples/Lock";
@@ -76,8 +81,8 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
 export default () => (
   <Switch>
-    <RouteWithLoader exact path={Routes.Signin.path} component={Signin} />
-    <RouteWithLoader exact path={Routes.Signup.path} component={Signup} />
+    <RouteWithLoader exact path={Routes.KullaniciGiris.path} component={KullaniciGiris} />
+    <RouteWithLoader exact path={Routes.KullaniciKayit.path} component={KullaniciKayit} />
     <RouteWithLoader exact path={Routes.ForgotPassword.path} component={ForgotPassword} />
     <RouteWithLoader exact path={Routes.ResetPassword.path} component={ResetPassword} />
     <RouteWithLoader exact path={Routes.Lock.path} component={Lock} />
@@ -86,13 +91,18 @@ export default () => (
 
     {/* pages */}
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
-    <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
+    <RouteWithSidebar exact path={Routes.HesapBilgileri.path} component={HesapBilgileri} />
     <RouteWithSidebar exact path={Routes.YeniIlan.path} component={YeniIlan} />
+    <RouteWithSidebar exact path={Routes.IlanDetay.path} component={IlanDetay} />
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />
+    <RouteWithSidebar exact path={Routes.ElemanAra.path} component={ElemanAra} />
+    <RouteWithSidebar exact path={Routes.YeniKategori.path} component={YeniKategori} />
+    <RouteWithSidebar exact path={Routes.KategoriDetay.path} component={KategoriDetay} />
     <RouteWithSidebar exact path={Routes.RaporEnCokArananlar.path} component={RaporEnCokArananlar} />
     <RouteWithSidebar exact path={Routes.RaporEnCokBulunanlar.path} component={RaporEnCokBulunanlar} />
     <RouteWithSidebar exact path={Routes.IlanListesi.path} component={IlanListesi} />
     <RouteWithSidebar exact path={Routes.BasvuruListesi.path} component={BasvuruListesi} />
+    <RouteWithSidebar exact path={Routes.KategoriListesi.path} component={KategoriListesi} />
 
     <Redirect to={Routes.NotFound.path} />
   </Switch>

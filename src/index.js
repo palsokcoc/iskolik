@@ -11,11 +11,13 @@ import "react-datetime/css/react-datetime.css";
 
 import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
+import Kullanici from './pages/KullaniciGiris';
+import Sidebar from './components/Sidebar';
 
 ReactDOM.render(
   <HashRouter>
     <ScrollToTop />
-    <HomePage />
+    <HomePage/>
   </HashRouter>,
   document.getElementById("root")
 );
