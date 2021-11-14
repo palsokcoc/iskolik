@@ -3,6 +3,7 @@ export const Routes = {
     // pages
     DashboardOverview: { path: "/dashboard/overview" },
     HesapBilgileri: { path: "/hesapBilgileri" },
+    Profil: { path: "/Profil" },
     YeniIlan: { path: "/yeniIlan" },
     IlanDetay: { path: "/ilanDetay" },
     IlanAra: { path: "/ilanAra" },

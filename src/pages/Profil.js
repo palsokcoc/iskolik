@@ -1,14 +1,14 @@
 import React from "react";
 import { Col, Row } from '@themesberg/react-bootstrap';
 import { ProfileCardWidget } from "../components/Widgets";
-import { HesapBilgileriForm } from "../components/Forms";
+import { ProfilForm } from "../components/Forms";
 
 export default () => {
   return (
     <>
       <Row>
         <Col xs={12} xl={8}>
-          <HesapBilgileriForm />
+          <ProfilForm />
         </Col>
 
         <Col xs={12} xl={4}>

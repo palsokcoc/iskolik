@@ -5,6 +5,7 @@ import { Routes } from "../routes";
 // pages
 import DashboardOverview from "./dashboard/DashboardOverview";
 import HesapBilgileri from "./HesapBilgileri";
+import Profil from "./Profil";
 import YeniIlan from "./YeniIlan";
 import IlanDetay from "./IlanDetay";
 import IlanAra from "./IlanAra";
@@ -92,6 +93,7 @@ export default () => (
     {/* pages */}
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.HesapBilgileri.path} component={HesapBilgileri} />
+    <RouteWithSidebar exact path={Routes.Profil.path} component={Profil} />
     <RouteWithSidebar exact path={Routes.YeniIlan.path} component={YeniIlan} />
     <RouteWithSidebar exact path={Routes.IlanDetay.path} component={IlanDetay} />
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />
