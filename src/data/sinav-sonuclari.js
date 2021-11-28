@@ -9,7 +9,7 @@ export default [
         "sonuc": "88.75"
     },
     {
-        "ad": "KODS",
+        "ad": "KPDS",
         "sonuc": "77"
     }
 ]

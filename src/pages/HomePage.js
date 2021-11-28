@@ -91,6 +91,7 @@ export default () => (
     <RouteWithLoader exact path={Routes.ServerError.path} component={ServerError} />
 
     {/* pages */}
+    <RouteWithSidebar exact path={Routes.homePage.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.HesapBilgileri.path} component={HesapBilgileri} />
     <RouteWithSidebar exact path={Routes.Profil.path} component={Profil} />
