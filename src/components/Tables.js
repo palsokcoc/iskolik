@@ -311,14 +311,14 @@ export const BasvuruListesiTable = () => {
 };
 
 
-export const KategoriListesiTable = () => {
+export const KategoriListesiTable = (props) => {
   const TableRow = (props) => {
-    const { kategoriId, ad, aciklama, ataKategori, durum } = props;
+    const { kategoriId, ad, aciklama, ataKategori } = props;
 
     return (
       <tr>
         <td>
-          <Card.Link as={Link} to={Routes.KategoriDetay.path} className="fw-normal">
+          <Card.Link as={Link} to={Routes.MevcutKategori.path + "/" + kategoriId} className="fw-normal">
             {kategoriId}
           </Card.Link>
         </td>
@@ -334,12 +334,7 @@ export const KategoriListesiTable = () => {
         </td>
         <td>
           <span className="fw-normal">
-            {ataKategori}
-          </span>
-        </td>
-        <td>
-          <span className={"fw-normal text-normal"}>
-            {durum}
+            {ataKategori ? ataKategori.ad : "-"}
           </span>
         </td>
         <td>
@@ -350,7 +345,7 @@ export const KategoriListesiTable = () => {
               </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item className="text-danger">
+              <Dropdown.Item className="text-danger" name={kategoriId} onClick={props.handleKategoriSil}>
                 <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Sil
               </Dropdown.Item>
             </Dropdown.Menu>
@@ -370,12 +365,11 @@ export const KategoriListesiTable = () => {
               <th className="border-bottom">Ad</th>
               <th className="border-bottom">Açıklama</th>
               <th className="border-bottom">Ata Kategori</th>
-              <th className="border-bottom">Durum</th>
               <th className="border-bottom">İşlem</th>
             </tr>
           </thead>
           <tbody>
-            {kategoriler.map(t => <TableRow key={`kategori-${t.kategoriId}`} {...t} />)}
+            {props.kategoriler.map(t => <TableRow handleKategoriSil={props.handleKategoriSil} key={`kategori-${t.kategoriId}`} {...t} />)}
           </tbody>
         </Table>
         <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">

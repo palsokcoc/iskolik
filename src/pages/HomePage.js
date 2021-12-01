@@ -11,6 +11,7 @@ import IlanDetay from "./IlanDetay";
 import IlanAra from "./IlanAra";
 import ElemanAra from "./ElemanAra";
 import YeniKategori from "./YeniKategori";
+import MevcutKategori from "./MevcutKategori";
 import KategoriDetay from "./KategoriDetay";
 import RaporEnCokArananlar from "./tables/RaporEnCokArananlar";
 import RaporEnCokBulunanlar from "./tables/RaporEnCokBulunanlar";
@@ -100,6 +101,7 @@ export default () => (
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />
     <RouteWithSidebar exact path={Routes.ElemanAra.path} component={ElemanAra} />
     <RouteWithSidebar exact path={Routes.YeniKategori.path} component={YeniKategori} />
+    <RouteWithSidebar exact path={Routes.MevcutKategori.path + "/:kategoriId"} component={MevcutKategori} />
     <RouteWithSidebar exact path={Routes.KategoriDetay.path} component={KategoriDetay} />
     <RouteWithSidebar exact path={Routes.RaporEnCokArananlar.path} component={RaporEnCokArananlar} />
     <RouteWithSidebar exact path={Routes.RaporEnCokBulunanlar.path} component={RaporEnCokBulunanlar} />

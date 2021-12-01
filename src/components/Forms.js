@@ -370,9 +370,7 @@ export const IlanDetayForm = () => {
 
 
 
-const KategoriForm = () => {
-  const [birthday, setBirthday] = useState("");
-
+const KategoriForm = (props) => {
   return (
     <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
@@ -383,7 +381,7 @@ const KategoriForm = () => {
             </Col>
             <Col md={9} className="mb-3">
               <Form.Group id="ad">
-                  <Form.Control required type="text" placeholder="" />
+                <Form.Control required type="text" name="ad" placeholder="" value={props.kategori.ad || ""} onChange={props.onChange}/>
                 </Form.Group>
             </Col>
           </Row>
@@ -394,7 +392,7 @@ const KategoriForm = () => {
             </Col>
             <Col md={9} className="mb-3">
               <Form.Group id="aciklama">
-                  <Form.Control required placeholder=""/>
+                <Form.Control required name="aciklama" placeholder="" value={props.kategori.aciklama || ""} onChange={props.onChange}/>
                 </Form.Group>
             </Col>
           </Row>
@@ -404,20 +402,12 @@ const KategoriForm = () => {
               <Form.Label column="true">Ata Kategori:</Form.Label>
             </Col>
             <Col md={9} className="mb-3">
-              <Form.Group id="ataKategori">
-                  <Form.Control required placeholder=""/>
-                </Form.Group>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={3} className="mb-3">
-              <Form.Label column="true">Durum:</Form.Label>
-            </Col>
-            <Col md={9} className="mb-3">
-              <Form.Group id="durum">
-                  <Form.Control placeholder=""/>
-                </Form.Group>
+              <Form.Group id="ataKategoriIdd">
+                <Form.Select name="ataKategoriId" value={props.kategori.ataKategori && props.kategori.ataKategori.kategoriId} onChange={props.onChange}>
+                  <option value="0" key="0"></option>
+                  {props.kategoriler.map(kategori => <option value={kategori.kategoriId} key={kategori.kategoriId}>{kategori.ad}</option>)}
+                </Form.Select>
+              </Form.Group>
             </Col>
           </Row>
         </Form>
@@ -427,20 +417,15 @@ const KategoriForm = () => {
 };
 
 
-export const YeniKategoriForm = () => {
-  const [birthday, setBirthday] = useState("");
+export const YeniKategoriForm = (props) => {
 
   return (
     <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
-        <Form>
-          <KategoriForm/>
+        <Form onSubmit={props.onFormSubmit}>
+          <KategoriForm kategori={props.kategori} kategoriler={props.kategoriler} onChange={props.onChange}/>
           <div className="mt-3">
             <Button variant="primary" type="submit">Kaydet</Button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button variant="primary" type="submit">Yayınla</Button>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button variant="danger" type="submit">Sil</Button>
           </div>
         </Form>
       </Card.Body>
@@ -448,6 +433,23 @@ export const YeniKategoriForm = () => {
   );
 };
 
+export const MevcutKategoriForm = (props) => {
+
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body>
+        <Form onSubmit={props.onFormSubmit}>
+          <KategoriForm kategori={props.kategori} kategoriler={props.kategoriler} onChange={props.onChange}/>
+          <div className="mt-3">
+            <Button variant="primary" type="submit">Kaydet</Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Button variant="danger" >Sil</Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
 
 export const KategoriDetayForm = () => {
   const [birthday, setBirthday] = useState("");

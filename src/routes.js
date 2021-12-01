@@ -9,6 +9,7 @@ export const Routes = {
   IlanAra: { path: "/ilanAra" },
   ElemanAra: { path: "/elemanAra" },
   YeniKategori: { path: "/yeniKategori" },
+  MevcutKategori: { path: "/mevcutKategori" },
   KategoriDetay: { path: "/KategoriDetay" },
   RaporEnCokArananlar: { path: "/tables/raporEnCokArananlar" },
   RaporEnCokBulunanlar: { path: "/raporEnCokBulunanlar" },
