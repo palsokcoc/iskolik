@@ -17,10 +17,6 @@ export default (props) => {
           <div className="d-flex align-items-center">
             <Form className="navbar-search">
               <Form.Group id="topbarSearch">
-                <InputGroup className="input-group-merge search-bar">
-                  <InputGroup.Text><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
-                  <Form.Control type="text" placeholder="Ara" />
-                </InputGroup>
               </Form.Group>
             </Form>
           </div>

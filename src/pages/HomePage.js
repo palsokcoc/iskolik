@@ -7,12 +7,11 @@ import DashboardOverview from "./dashboard/DashboardOverview";
 import HesapBilgileri from "./HesapBilgileri";
 import Profil from "./Profil";
 import YeniIlan from "./YeniIlan";
-import IlanDetay from "./IlanDetay";
+import MevcutIlan from "./MevcutIlan";
 import IlanAra from "./IlanAra";
 import ElemanAra from "./ElemanAra";
 import YeniKategori from "./YeniKategori";
 import MevcutKategori from "./MevcutKategori";
-import KategoriDetay from "./KategoriDetay";
 import RaporEnCokArananlar from "./tables/RaporEnCokArananlar";
 import RaporEnCokBulunanlar from "./tables/RaporEnCokBulunanlar";
 import IlanListesi from "./tables/IlanListesi";
@@ -97,12 +96,11 @@ export default () => (
     <RouteWithSidebar exact path={Routes.HesapBilgileri.path} component={HesapBilgileri} />
     <RouteWithSidebar exact path={Routes.Profil.path} component={Profil} />
     <RouteWithSidebar exact path={Routes.YeniIlan.path} component={YeniIlan} />
-    <RouteWithSidebar exact path={Routes.IlanDetay.path} component={IlanDetay} />
+    <RouteWithSidebar exact path={Routes.MevcutIlan.path + "/:ilanId"} component={MevcutIlan} />
     <RouteWithSidebar exact path={Routes.IlanAra.path} component={IlanAra} />
     <RouteWithSidebar exact path={Routes.ElemanAra.path} component={ElemanAra} />
     <RouteWithSidebar exact path={Routes.YeniKategori.path} component={YeniKategori} />
     <RouteWithSidebar exact path={Routes.MevcutKategori.path + "/:kategoriId"} component={MevcutKategori} />
-    <RouteWithSidebar exact path={Routes.KategoriDetay.path} component={KategoriDetay} />
     <RouteWithSidebar exact path={Routes.RaporEnCokArananlar.path} component={RaporEnCokArananlar} />
     <RouteWithSidebar exact path={Routes.RaporEnCokBulunanlar.path} component={RaporEnCokBulunanlar} />
     <RouteWithSidebar exact path={Routes.IlanListesi.path} component={IlanListesi} />

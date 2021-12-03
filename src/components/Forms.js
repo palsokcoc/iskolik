@@ -164,7 +164,7 @@ export const HesapBilgileriForm = () => {
 };
 
 
-const IlanForm = () => {
+const IlanForm = (props) => {
   const [birthday, setBirthday] = useState("");
 
   return (
@@ -177,7 +177,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="unvan">
-                <Form.Control required type="text" placeholder="" />
+                <Form.Control required type="text" name="unvan" value={props.ilan.unvan || ""} onChange={props.onChange}/>
               </Form.Group>
           </Col>
         </Row>
@@ -188,7 +188,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="aciklama">
-                <Form.Control required placeholder=""/>
+                <Form.Control required name="aciklama" value={props.ilan.aciklama || ""} onChange={props.onChange}/>
               </Form.Group>
           </Col>
         </Row>
@@ -199,7 +199,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="zorunluOzellikler">
-                <Form.Control required placeholder=""/>
+                <Form.Control name="zorunluOzellikler" value={props.ilan.zorunluOzellikler || ""} onChange={props.onChange}/>
               </Form.Group>
           </Col>
         </Row>
@@ -210,7 +210,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="tercihenOzellikler">
-                <Form.Control placeholder=""/>
+                <Form.Control name="tercihenOzellikler" value={props.ilan.tercihenOzellikler || ""} onChange={props.onChange}/>
               </Form.Group>
           </Col>
         </Row>
@@ -221,7 +221,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="yer">
-                <Form.Control required placeholder=""/>
+                <Form.Control required name="yer" value={props.ilan.yer || ""} onChange={props.onChange}/>
               </Form.Group>
           </Col>
         </Row>
@@ -231,10 +231,10 @@ const IlanForm = () => {
             <Form.Label column="true">Çalışma Zamanı:</Form.Label>
           </Col>
           <Col md={3} className="mb-3">
-            <Form.Group id="calismaZamani">
-              <Form.Select defaultValue="0">
-                  <option value="0" selected>Tam Zamanlı</option>
-                  <option value="1">Yarı Zamanlı</option>
+              <Form.Group id="calismaZamani">
+              <Form.Select  name="calismaZamaniId" value={props.ilan.isPartTime} onChange={props.onChange}>
+                  <option value="false">Tam Zamanlı</option>
+                  <option value="true">Yarı Zamanlı</option>
                 </Form.Select>
               </Form.Group>
           </Col>
@@ -245,16 +245,16 @@ const IlanForm = () => {
             <Form.Label column="true">Maaş Aralığı:</Form.Label>
           </Col>
           <Col md={3} className="mb-3">
-            <Form.Group id="maasMin">
-              <Form.Control type="number" placeholder="" min="0"/>
+            <Form.Group id="minMaas">
+                <Form.Control type="number" placeholder="0" min="0" name="minMaas" value={props.ilan.minMaas} onChange={props.onChange} />
             </Form.Group>
           </Col>
           <Col md={1} className="mb-3">
             <Form.Label column="true">&nbsp;-&nbsp;</Form.Label>
           </Col>
           <Col md={3} className="mb-3">
-            <Form.Group id="maasMax">
-              <Form.Control type="number" placeholder="" min="0"/>
+            <Form.Group id="maxMaas">
+              <Form.Control type="number" placeholder="0" min="0" name="maxMaas" value={props.ilan.maxMaas} onChange={props.onChange} />
             </Form.Group>
           </Col>
         </Row>
@@ -265,7 +265,7 @@ const IlanForm = () => {
           </Col>
           <Col md={9} className="mb-3">
             <Form.Group id="basvuruLimiti">
-                <Form.Control required type="number" placeholder="0" min="0"/>
+                <Form.Control required type="number" placeholder="0" min="0"  name="basvuruLimiti" value={props.ilan.basvuruLimiti} onChange={props.onChange} />
              </Form.Group>
           </Col>
         </Row>
@@ -279,17 +279,21 @@ const IlanForm = () => {
                 <Datetime
                   locale="tr"
                   timeFormat={false}
-                  onChange={setBirthday}
+                  onChange={props.onYayinTarihiChange}
+                  inputProps={props}
+                  closeOnSelect={ true }
                   renderInput={(props, openCalendar) => (
                     <InputGroup>
                       <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
                       <Form.Control
                         required
                         type="text"
-                        value={birthday ? moment(birthday).format("MM/DD/YYYY") : ""}
+                        name="yayinTarihi"
+                        value={props.ilan.yayinTarihi ? moment(props.ilan.yayinTarihi).format("DD/MM/YYYY") : ""}
                         placeholder="gg/aa/yyyy"
                         onFocus={openCalendar}
-                        onChange={() => { }} />
+                        onChange={() => { }}
+                       />
                     </InputGroup>
                   )} />
               </Form.Group>
@@ -305,17 +309,21 @@ const IlanForm = () => {
                 <Datetime
                   locale="tr"
                   timeFormat={false}
-                  onChange={setBirthday}
+                  onChange={props.onSonBasvuruTarihiChange}
+                  inputProps={props}
+                  closeOnSelect={ true }
                   renderInput={(props, openCalendar) => (
                     <InputGroup>
                       <InputGroup.Text><FontAwesomeIcon icon={faCalendarAlt} /></InputGroup.Text>
                       <Form.Control
                         required
                         type="text"
-                        value={birthday ? moment(birthday).format("MM/DD/YYYY") : ""}
+                        name="sonBasvuruTarihi"
+                        value={props.ilan.sonBasvuruTarihi ? moment(props.ilan.sonBasvuruTarihi).format("DD/MM/YYYY") : ""}
                         placeholder="gg/aa/yyyy"
                         onFocus={openCalendar}
-                        onChange={() => { }} />
+                        onChange={() => { }}
+                       />
                     </InputGroup>
                   )} />
               </Form.Group>
@@ -328,14 +336,27 @@ const IlanForm = () => {
 };
 
 
-export const YeniIlanForm = () => {
-  const [birthday, setBirthday] = useState("");
+export const YeniIlanForm = (props) => {
+  return (
+    <Card border="light" className="bg-white shadow-sm mb-4">
+      <Card.Body onSubmit={props.onFormSubmit}>
+        <Form>
+          <IlanForm ilan={props.ilan} ilanlar={props.ilanlar} onChange={props.onChange}  onYayinTarihiChange={props.onYayinTarihiChange} onSonBasvuruTarihiChange={props.onSonBasvuruTarihiChange}/>
+          <div className="mt-3">
+            <Button variant="primary" type="submit">Kaydet</Button>
+          </div>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
 
+export const MevcutIlanForm = (props) => {
   return (
     <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
-        <Form>
-          <IlanForm/>
+        <Form onSubmit={props.onFormSubmit}>
+          <IlanForm ilan={props.ilan} ilanlar={props.ilanlar} onChange={props.onChange}/>
           <div className="mt-3">
             <Button variant="primary" type="submit">Kaydet</Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -343,73 +364,6 @@ export const YeniIlanForm = () => {
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Button variant="danger" type="submit">Sil</Button>
           </div>
-        </Form>
-      </Card.Body>
-    </Card>
-  );
-};
-
-
-export const IlanDetayForm = () => {
-  const [birthday, setBirthday] = useState("");
-
-  return (
-    <Card border="light" className="bg-white shadow-sm mb-4">
-      <Card.Body>
-        <Form>
-          <h5 style={{"text-align": "center"}}>İlan No: 99999</h5>
-          <IlanForm/>
-          <div className="mt-3">
-            <Button variant="primary" type="submit">Başvur</Button>
-          </div>
-        </Form>
-      </Card.Body>
-    </Card>
-  );
-};
-
-
-
-const KategoriForm = (props) => {
-  return (
-    <Card border="light" className="bg-white shadow-sm mb-4">
-      <Card.Body>
-        <Form>
-          <Row>
-            <Col md={3} className="mb-3">
-              <Form.Label column="true">Ad:</Form.Label>
-            </Col>
-            <Col md={9} className="mb-3">
-              <Form.Group id="ad">
-                <Form.Control required type="text" name="ad" placeholder="" value={props.kategori.ad || ""} onChange={props.onChange}/>
-                </Form.Group>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={3} className="mb-3">
-              <Form.Label column="true">Açıklama:</Form.Label>
-            </Col>
-            <Col md={9} className="mb-3">
-              <Form.Group id="aciklama">
-                <Form.Control required name="aciklama" placeholder="" value={props.kategori.aciklama || ""} onChange={props.onChange}/>
-                </Form.Group>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col md={3} className="mb-3">
-              <Form.Label column="true">Ata Kategori:</Form.Label>
-            </Col>
-            <Col md={9} className="mb-3">
-              <Form.Group id="ataKategoriIdd">
-                <Form.Select name="ataKategoriId" value={props.kategori.ataKategori && props.kategori.ataKategori.kategoriId} onChange={props.onChange}>
-                  <option value="0" key="0"></option>
-                  {props.kategoriler.map(kategori => <option value={kategori.kategoriId} key={kategori.kategoriId}>{kategori.ad}</option>)}
-                </Form.Select>
-              </Form.Group>
-            </Col>
-          </Row>
         </Form>
       </Card.Body>
     </Card>
@@ -451,26 +405,51 @@ export const MevcutKategoriForm = (props) => {
   );
 };
 
-export const KategoriDetayForm = () => {
-  const [birthday, setBirthday] = useState("");
-
+const KategoriForm = (props) => {
   return (
     <Card border="light" className="bg-white shadow-sm mb-4">
       <Card.Body>
         <Form>
-          <h5 style={{"text-align": "center"}}>Kategori No: 99999</h5>
-          <KategoriForm/>
-          <div className="mt-3">
-          <Button variant="primary" type="submit">Düzelt</Button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <Button variant="primary" type="submit">Sil</Button>
-          </div>
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Ad:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="ad">
+                <Form.Control required type="text" name="ad" placeholder="" value={props.kategori.ad || ""} onChange={props.onChange}/>
+                </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Açıklama:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="aciklama">
+                <Form.Control required name="aciklama" placeholder="" value={props.kategori.aciklama || ""} onChange={props.onChange}/>
+                </Form.Group>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col md={3} className="mb-3">
+              <Form.Label column="true">Ata Kategori:</Form.Label>
+            </Col>
+            <Col md={9} className="mb-3">
+              <Form.Group id="ataKategoriIdd">
+                <Form.Select name="ataKategoriId" value={props.kategori.ataKategori && props.kategori.ataKategori.kategoriId} onChange={props.onChange}>
+                  <option value="0" key="0">""</option>
+                  {props.kategoriler.map(kategori => <option value={kategori.kategoriId} key={kategori.kategoriId}>{kategori.ad}</option>)}
+                </Form.Select>
+              </Form.Group>
+            </Col>
+          </Row>
         </Form>
       </Card.Body>
     </Card>
   );
 };
-
 
 export const ProfilForm = () => {
   const [birthday, setBirthday] = useState("");

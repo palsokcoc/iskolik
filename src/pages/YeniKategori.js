@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from '@themesberg/react-bootstrap';
-import { ProfileCardWidget } from "../components/Widgets";
 import { YeniKategoriForm } from "../components/Forms";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';

@@ -1,15 +1,46 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb } from '@themesberg/react-bootstrap';
-
+import { Breadcrumb,Card } from '@themesberg/react-bootstrap';
+import { BACKEND_BASE_URL, handleResponse, handleError } from "../globals.js";
 import { IlanListesiTable } from "../../components/Tables";
-
-
-
+import { Link } from 'react-router-dom';
+import { Button } from '@themesberg/react-bootstrap';
+import { Routes } from "../../routes";
 
 export default () => {
+    const [ilanlar, setIlanlar] = useState([]);
+
+  useEffect(() => {
+    getIlanlar().then((_ilanlar) => {
+      setIlanlar(_ilanlar.data);
+    });
+  }, []);
+
+  function getIlanlar() {
+      return fetch(BACKEND_BASE_URL + "/ilan")
+        .then(handleResponse)
+        .catch(handleError);
+  }
+  
+  function deleteIlan(event) {
+    event.preventDefault();
+    return fetch(BACKEND_BASE_URL + "/ilan/" + event.target.name, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    })
+      .then(handleResponse)
+      .then(
+        (response) => {
+          debugger;
+          setIlanlar(ilanlar.filter(ilan => ilan.ilanId !== response.data[0].ilanId));
+        }
+      )
+      .catch(handleError);
+
+  }
+
   return (
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -23,7 +54,11 @@ export default () => {
         </div>
       </div>
 
-      <IlanListesiTable />
+      <IlanListesiTable ilanlar={ilanlar} handleIlanSil={deleteIlan}/>
+      <p />
+      <Card.Link as={Link} to={Routes.YeniIlan.path} className="fw-normal">
+        <Button variant="primary">İlan Ekle</Button>
+      </Card.Link>
     </>
   );
 };

@@ -11,7 +11,7 @@ import { Routes } from "../routes";
 export default (props) => {
   const [kategori, setKategori] = useState({
     kategoriId: null,
-    ad: "ss",
+    ad: "",
     aciklama: "",
     ataKategori: {
       kategoriId: null,

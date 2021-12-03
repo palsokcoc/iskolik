@@ -16,14 +16,14 @@ import sinavSonuclari from "../data/sinav-sonuclari";
 import sertifikaListesi from "../data/sertifika-listesi";
 import yetenekListesi from "../data/yetenek-listesi";
 
-export const IlanListesiTable = () => {
+export const IlanListesiTable = (props) => {
   const TableRow = (props) => {
     const { ilanId, unvan, yayinTarihi, sonBasvuruTarihi, durum } = props;
 
     return (
       <tr>
         <td>
-          <Card.Link as={Link} to={Routes.IlanDetay.path} className="fw-normal">
+          <Card.Link as={Link} to={Routes.MevcutIlan.path + "/" + ilanId} className="fw-normal">
             {ilanId}
           </Card.Link>
         </td>
@@ -86,7 +86,7 @@ export const IlanListesiTable = () => {
             </tr>
           </thead>
           <tbody>
-            {isIlanlari.map(t => <TableRow key={`isIlani-${t.ilanId}`} {...t} />)}
+            {props.ilanlar.map(t => <TableRow key={`isIlani-${t.ilanId}`} {...t} />)}
           </tbody>
         </Table>
         <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">
@@ -121,7 +121,7 @@ export const IlanListesiAramaSonucuTable = () => {
     return (
       <tr>
         <td>
-          <Card.Link as={Link} to={Routes.IlanDetay.path} className="fw-normal">
+          <Card.Link as={Link} to={Routes.IlanAra.path} className="fw-normal">
             {ilanId}
           </Card.Link>
         </td>
@@ -222,7 +222,7 @@ export const BasvuruListesiTable = () => {
     return (
       <tr>
         <td>
-          <Card.Link as={Link} to={Routes.IlanDetay.path} className="fw-normal">
+          <Card.Link as={Link} to={Routes.BasvuruListesi.path} className="fw-normal">
             {ilanId}
           </Card.Link>
         </td>
@@ -466,7 +466,7 @@ export const ElemanAramaSonucuTable = () => {
     return (
       <tr>
         <td>
-          <Card.Link as={Link} to={Routes.IlanDetay.path} className="fw-normal">
+          <Card.Link as={Link} to={Routes.ElemanAra.path} className="fw-normal">
             {ad} &nbsp; {soyad}
           </Card.Link>
         </td>

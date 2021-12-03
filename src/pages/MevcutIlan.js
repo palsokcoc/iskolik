@@ -27,27 +27,20 @@ export default (props) => {
 	  durum: null
   });
 
-  const [ilanlar, setIlanlar] = useState([]);
-
   useEffect(() => {
-    getIlanlar().then((_ilanlar) => {
-      setIlanlar(_ilanlar.data);
-    });
-  }, []);
+    getIlan(props.match.params.ilanId)
+      .then(_ilan => setIlan(_ilan.data[0]));
+  }, [props.match.params.ilanId]);
 
-  function getIlanlar() {
-      return fetch(BACKEND_BASE_URL + "/ilan")
+  function getIlan(ilanId) {
+      return fetch(BACKEND_BASE_URL + "/ilan/" + ilanId)
         .then(handleResponse)
         .catch(handleError);
   }
+
   function handleChange({ target }) {
     // { target } <--> const target = event.target; // object destructering
     setIlan({ ...ilan, [target.name]: target.value });
-  }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    saveIlan(ilan);
   }
 
   function handleChangeYayinTarihi(tarih) {
@@ -58,8 +51,14 @@ export default (props) => {
     setIlan({ ...ilan, sonBasvuruTarihi: tarih });
   }
 
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    saveIlan(ilan);
+  }
+
   function saveIlan(ilan) {
-    return fetch(BACKEND_BASE_URL + "/ilan" + (ilan.ilanId || ""), {
+    debugger;
+    return fetch(BACKEND_BASE_URL + "/ilan" + ("/"+ilan.ilanId || ""), {
     method: ilan.ilanId ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
     headers: { "content-type": "application/json"},
     body: JSON.stringify({
@@ -77,18 +76,13 @@ export default (props) => {
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <div className="d-block mb-4 mb-xl-0">
-          <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
-            <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item>İlan İşlemleri</Breadcrumb.Item>
-            <Breadcrumb.Item active>Yeni İlan</Breadcrumb.Item>
-          </Breadcrumb>
-          <h4>Yeni İlan</h4>
+          <h4>İlan Detayı</h4>
         </div>
       </div>
 
       <Row>
         <Col xs={12} xl={8}>
-          <YeniIlanForm  ilan={ilan} kategoriler={ilanlar} onChange={handleChange} onFormSubmit={handleFormSubmit} onYayinTarihiChange={handleChangeYayinTarihi} onSonBasvuruTarihiChange={handleChangeSonBasvuruTarihi}/>
+          <YeniIlanForm ilan={ilan} onChange={handleChange} onFormSubmit={handleFormSubmit} onYayinTarihiChange={handleChangeYayinTarihi} onSonBasvuruTarihiChange={handleChangeSonBasvuruTarihi}/>
         </Col>
       </Row>
     </>
