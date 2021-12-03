@@ -9,7 +9,7 @@ import "./scss/volt.scss";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "react-datetime/css/react-datetime.css";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./HomePage";
 import ScrollToTop from "./components/ScrollToTop";
 import Kullanici from "./pages/KullaniciGiris";
 import Sidebar from "./components/Sidebar";

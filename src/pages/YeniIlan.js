@@ -40,6 +40,7 @@ export default (props) => {
         .then(handleResponse)
         .catch(handleError);
   }
+
   function handleChange({ target }) {
     // { target } <--> const target = event.target; // object destructering
     setIlan({ ...ilan, [target.name]: target.value });

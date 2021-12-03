@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from '@themesberg/react-bootstrap';
-import { YeniKategoriForm } from "../components/Forms";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
-import { BACKEND_BASE_URL, handleResponse, handleError } from "./globals.js";
-import { Routes } from "../routes";
+import { Routes } from "../../../routes";
+import { handleResponse, handleError } from "../../../common/globals.js"; import { YeniKategoriForm } from "../forms/KategoriForms";
+import * as kategoriApi from "../api/kategoriApi.js";
 
 export default (props) => {
   const [kategori, setKategori] = useState({
@@ -18,42 +18,28 @@ export default (props) => {
   const [kategoriler, setKategoriler] = useState([]);
 
   useEffect(() => {
-    getKategoriler().then((_kategoriler) => {
+    kategoriApi.getKategoriler().then((_kategoriler) => {
       setKategoriler(_kategoriler.data);
     });
   }, []);
 
-  function getKategoriler() {
-      return fetch(BACKEND_BASE_URL + "/kategori")
-        .then(handleResponse)
-        .catch(handleError);
-  }
   function handleChange({ target }) {
     // { target } <--> const target = event.target; // object destructering
-    setKategori({ ...kategori, [target.name]: target.value });
+    if (target.name === "ataKategoriId") {
+      setKategori({ ...kategori, ataKategori: { kategoriId: target.value } });
+    } else {
+      setKategori({ ...kategori, [target.name]: target.value });
+    }
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    saveKategori(kategori);
+    kategoriApi.saveKategori(kategori)
+      .then(handleResponse)
+      .then(() => props.history.push(Routes.KategoriListesi.path))
+      .catch(handleError);
   }
 
-  function saveKategori(kategori) {
-    debugger;
-    return fetch(BACKEND_BASE_URL + "/kategori" + (kategori.kategoriId || ""), {
-    method: kategori.kategoriId ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
-    headers: { "content-type": "application/json"},
-    body: JSON.stringify({
-      ...kategori,
-      // Parse authorId to a number (in case it was sent as a string).
-      kategoriId: parseInt(kategori.kategoriId, 10),
-      ataKategori: {kategoriId: kategori.ataKategoriId && Number.parseInt(kategori.ataKategoriId)}
-    })
-  })
-    .then(handleResponse).then(()=>props.history.push(Routes.KategoriListesi.path))
-    .catch(handleError);
-  }
-  
   return (
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -69,7 +55,7 @@ export default (props) => {
 
       <Row>
         <Col xs={12} xl={8}>
-          <YeniKategoriForm kategori={kategori} kategoriler={kategoriler} onChange={handleChange} onFormSubmit={handleFormSubmit}/>
+          <YeniKategoriForm kategori={kategori} kategoriler={kategoriler} handleChange={handleChange} handleFormSubmit={handleFormSubmit} />
         </Col>
       </Row>
     </>

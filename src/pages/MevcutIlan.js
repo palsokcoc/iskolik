@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from '@themesberg/react-bootstrap';
 import { YeniIlanForm } from "../components/Forms";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb } from '@themesberg/react-bootstrap';
 import { BACKEND_BASE_URL, handleResponse, handleError } from "./globals.js";
 import { Routes } from "../routes";
 

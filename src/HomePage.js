@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Routes } from "../routes";
+import { Routes } from "./routes";
 
 // pages
-import DashboardOverview from "./dashboard/DashboardOverview";
-import HesapBilgileri from "./HesapBilgileri";
-import Profil from "./Profil";
-import YeniIlan from "./YeniIlan";
-import MevcutIlan from "./MevcutIlan";
-import IlanAra from "./IlanAra";
-import ElemanAra from "./ElemanAra";
-import YeniKategori from "./YeniKategori";
-import MevcutKategori from "./MevcutKategori";
-import RaporEnCokArananlar from "./tables/RaporEnCokArananlar";
-import RaporEnCokBulunanlar from "./tables/RaporEnCokBulunanlar";
-import IlanListesi from "./tables/IlanListesi";
-import BasvuruListesi from "./tables/BasvuruListesi";
-import KullaniciGiris from "./KullaniciGiris";
-import KullaniciKayit from "./KullaniciKayit";
-import KategoriListesi from "./tables/KategoriListesi";
-import ForgotPassword from "./examples/ForgotPassword";
-import ResetPassword from "./examples/ResetPassword";
-import Lock from "./examples/Lock";
-import NotFoundPage from "./examples/NotFound";
-import ServerError from "./examples/ServerError";
+import YeniKategori from "./yonetici/kategori/pages/YeniKategori";
+import MevcutKategori from "./yonetici/kategori/pages/MevcutKategori";
+import KategoriListesi from "./yonetici/kategori/pages/KategoriListesi";
+
+import DashboardOverview from "./pages/dashboard/DashboardOverview";
+import HesapBilgileri from "./pages/HesapBilgileri";
+import Profil from "./pages/Profil";
+import YeniIlan from "./pages/YeniIlan";
+import MevcutIlan from "./pages/MevcutIlan";
+import IlanAra from "./pages/IlanAra";
+import ElemanAra from "./pages/ElemanAra";
+import RaporEnCokArananlar from "./pages/tables/RaporEnCokArananlar";
+import RaporEnCokBulunanlar from "./pages/tables/RaporEnCokBulunanlar";
+import IlanListesi from "./pages/tables/IlanListesi";
+import BasvuruListesi from "./pages/tables/BasvuruListesi";
+import KullaniciGiris from "./pages/KullaniciGiris";
+import KullaniciKayit from "./pages/KullaniciKayit";
+import ForgotPassword from "./pages/examples/ForgotPassword";
+import ResetPassword from "./pages/examples/ResetPassword";
+import Lock from "./pages/examples/Lock";
+import NotFoundPage from "./pages/examples/NotFound";
+import ServerError from "./pages/examples/ServerError";
 
 // components
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Preloader from "../components/Preloader";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
