@@ -4,6 +4,7 @@ import { handleResponse, handleError } from "../../../common/globals.js";
 import { Routes } from "../../../routes";
 import { MevcutKategoriForm } from "../forms/KategoriForms";
 import * as kategoriApi from "../api/kategoriApi.js";
+import { toast } from 'react-toastify';
 
 export default (props) => {
   const [kategori, setKategori] = useState({
@@ -41,14 +42,20 @@ export default (props) => {
     event.preventDefault();
     kategoriApi.saveKategori(kategori)
       .then(handleResponse)
-      .then(() => props.history.push(Routes.KategoriListesi.path))
+      .then(response => {
+        toast(response.message);
+        props.history.push(Routes.KategoriListesi.path);
+      })
       .catch(handleError);
   }
 
   function handleDeleteKategori() {
     kategoriApi.deleteKategori(kategori.kategoriId)
       .then(handleResponse)
-      .then(() => props.history.push(Routes.KategoriListesi.path))
+      .then(response => {
+        toast(response.message);
+        props.history.push(Routes.KategoriListesi.path);
+      })
       .catch(handleError);
   }
 

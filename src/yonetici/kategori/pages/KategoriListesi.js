@@ -5,10 +5,11 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb, Card } from '@themesberg/react-bootstrap';
 import { KategoriListesiTable } from "../tables/KategoriTable";
 import { Button } from '@themesberg/react-bootstrap';
-import { handleResponse, handleError } from "../../../pages/globals";
+import { handleResponse, handleError } from "../../../common/globals";
 import { Link } from 'react-router-dom';
 import { Routes } from "../../../routes";
 import * as kategoriApi from "../api/kategoriApi";
+import { toast } from 'react-toastify';
 
 export default () => {
   const [kategoriler, setKategoriler] = useState([]);
@@ -20,15 +21,15 @@ export default () => {
   }, []);
 
   function handleDeleteKategori(event) {
-    debugger;
     kategoriApi.deleteKategori(event.target.name)
-      .then(handleResponse)
+      .then(response => handleResponse(response))
       .then(
-        (response) => {
+        response => {
+          toast(response.message);
           setKategoriler(kategoriler.filter(kategori => kategori.kategoriId !== response.data[0].kategoriId));
         }
       )
-      .catch(handleError);
+      .catch(response => handleError(response));
   }
 
   return (

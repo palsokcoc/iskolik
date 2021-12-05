@@ -4,8 +4,10 @@ import { Col, Row } from '@themesberg/react-bootstrap';
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
 import { Routes } from "../../../routes";
-import { handleResponse, handleError } from "../../../common/globals.js"; import { YeniKategoriForm } from "../forms/KategoriForms";
+import { handleResponse, handleError } from "../../../common/globals.js";
+import { YeniKategoriForm } from "../forms/KategoriForms";
 import * as kategoriApi from "../api/kategoriApi.js";
+import { toast } from 'react-toastify';
 
 export default (props) => {
   const [kategori, setKategori] = useState({
@@ -36,7 +38,10 @@ export default (props) => {
     event.preventDefault();
     kategoriApi.saveKategori(kategori)
       .then(handleResponse)
-      .then(() => props.history.push(Routes.KategoriListesi.path))
+      .then(response => {
+        toast(response.message);
+        props.history.push(Routes.KategoriListesi.path);
+      })
       .catch(handleError);
   }
 

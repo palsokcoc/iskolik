@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Routes } from "./routes";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // pages
 import YeniKategori from "./yonetici/kategori/pages/YeniKategori";
 import MevcutKategori from "./yonetici/kategori/pages/MevcutKategori";
@@ -41,7 +44,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
   }, []);
 
   return (
-    <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
+    <Route {...rest} render={props => (<> <Preloader show={loaded ? false : true} /> <Component {...props} /> </>)} />
   );
 };
 
@@ -72,6 +75,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
         <main className="content">
           <Navbar />
+          <ToastContainer autoClose={5000} hideProgressBar position="top-right" />
           <Component {...props} />
           <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
         </main>

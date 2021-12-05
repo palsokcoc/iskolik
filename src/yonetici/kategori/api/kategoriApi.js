@@ -13,7 +13,7 @@ export function getKategoriler() {
 }
 
 export function saveKategori(kategori) {
-    return fetch(BACKEND_BASE_URL + "/kategori" + ("/" + kategori.kategoriId || ""), {
+    return fetch(BACKEND_BASE_URL + "/kategori/" + (kategori.kategoriId || ""), {
         method: kategori.kategoriId ? "PUT" : "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({

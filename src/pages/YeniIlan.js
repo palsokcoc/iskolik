@@ -4,7 +4,7 @@ import { Col, Row } from '@themesberg/react-bootstrap';
 import { YeniIlanForm } from "../components/Forms";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
-import { BACKEND_BASE_URL, handleResponse, handleError } from "./globals.js";
+import { BACKEND_BASE_URL, handleResponse, handleError } from "../common/globals";
 import { Routes } from "../routes";
 
 export default (props) => {
@@ -12,19 +12,19 @@ export default (props) => {
     ilanId: null,
     kullanici: null,
     unvan: "",
-	  isPartTime: false,
-	  yer: "",
-	  girisTarihi: "",
-	  yayinTarihi: "",
-	  iptalTarihi: "",
-	  sonBasvuruTarihi: "",
-	  basvuruLimiti: "",
-	  aciklama: "",
-	  zorunluOzellikler: "",
-	  tercihenOzellikler: "",
-	  minMaas: 0,
-	  maxMaas: 0,
-	  durum: null
+    isPartTime: false,
+    yer: "",
+    girisTarihi: "",
+    yayinTarihi: "",
+    iptalTarihi: "",
+    sonBasvuruTarihi: "",
+    basvuruLimiti: "",
+    aciklama: "",
+    zorunluOzellikler: "",
+    tercihenOzellikler: "",
+    minMaas: 0,
+    maxMaas: 0,
+    durum: null
   });
 
   const [ilanlar, setIlanlar] = useState([]);
@@ -36,9 +36,9 @@ export default (props) => {
   }, []);
 
   function getIlanlar() {
-      return fetch(BACKEND_BASE_URL + "/ilan")
-        .then(handleResponse)
-        .catch(handleError);
+    return fetch(BACKEND_BASE_URL + "/ilan")
+      .then(handleResponse)
+      .catch(handleError);
   }
 
   function handleChange({ target }) {
@@ -61,19 +61,19 @@ export default (props) => {
 
   function saveIlan(ilan) {
     return fetch(BACKEND_BASE_URL + "/ilan" + (ilan.ilanId || ""), {
-    method: ilan.ilanId ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
-    headers: { "content-type": "application/json"},
-    body: JSON.stringify({
-      ...ilan,
-      // Parse authorId to a number (in case it was sent as a string).
-      ilanId: parseInt(ilan.ilanId, 10),
-      kullanici: { type: "Kurumsal", kullaniciId: Number.parseInt(11) }
+      method: ilan.ilanId ? "PUT" : "POST", // POST for create, PUT to update when id already exists.
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        ...ilan,
+        // Parse authorId to a number (in case it was sent as a string).
+        ilanId: parseInt(ilan.ilanId, 10),
+        kullanici: { type: "Kurumsal", kullaniciId: Number.parseInt(11) }
+      })
     })
-  })
-    .then(handleResponse).then(()=>props.history.push(Routes.IlanListesi.path))
-    .catch(handleError);
+      .then(handleResponse).then(() => props.history.push(Routes.IlanListesi.path))
+      .catch(handleError);
   }
-  
+
   return (
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -89,7 +89,7 @@ export default (props) => {
 
       <Row>
         <Col xs={12} xl={8}>
-          <YeniIlanForm  ilan={ilan} kategoriler={ilanlar} onChange={handleChange} onFormSubmit={handleFormSubmit} onYayinTarihiChange={handleChangeYayinTarihi} onSonBasvuruTarihiChange={handleChangeSonBasvuruTarihi}/>
+          <YeniIlanForm ilan={ilan} kategoriler={ilanlar} onChange={handleChange} onFormSubmit={handleFormSubmit} onYayinTarihiChange={handleChangeYayinTarihi} onSonBasvuruTarihiChange={handleChangeSonBasvuruTarihi} />
         </Col>
       </Row>
     </>
