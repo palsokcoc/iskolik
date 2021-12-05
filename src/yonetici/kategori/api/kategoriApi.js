@@ -6,8 +6,8 @@ export function getKategori(kategoriId) {
         .catch(handleError);
 }
 
-export function getKategoriler() {
-    return fetch(BACKEND_BASE_URL + "/kategori?sort=ad")
+export function getKategoriler(pageNumber) {
+    return fetch(BACKEND_BASE_URL + "/kategori?sort=ad" + (pageNumber && ("&page=" + (pageNumber - 1))))
         .then(handleResponse)
         .catch(handleError);
 }

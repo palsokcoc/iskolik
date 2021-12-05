@@ -13,12 +13,13 @@ import { toast } from 'react-toastify';
 
 export default () => {
   const [kategoriler, setKategoriler] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    kategoriApi.getKategoriler().then((_kategoriler) => {
+    kategoriApi.getKategoriler(pageNumber).then((_kategoriler) => {
       setKategoriler(_kategoriler.data);
     });
-  }, []);
+  }, [pageNumber]);
 
   function handleDeleteKategori(event) {
     kategoriApi.deleteKategori(event.target.name)
@@ -30,6 +31,10 @@ export default () => {
         }
       )
       .catch(response => handleError(response));
+  }
+
+  function handlePaginationChange(pageNumber) {
+    setPageNumber(pageNumber);
   }
 
   return (
@@ -45,7 +50,7 @@ export default () => {
         </div>
       </div>
 
-      <KategoriListesiTable kategoriler={kategoriler} handleDeleteKategori={handleDeleteKategori} />
+      <KategoriListesiTable kategoriler={kategoriler} handleDeleteKategori={handleDeleteKategori} handlePaginationChange={handlePaginationChange} pageNumber={pageNumber} />
       <p />
       <Card.Link as={Link} to={Routes.YeniKategori.path} className="fw-normal">
         <Button variant="primary">Kategori Ekle</Button>
