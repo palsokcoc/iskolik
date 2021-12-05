@@ -1,19 +1,28 @@
+import { toast } from 'react-toastify';
+
 export const BACKEND_BASE_URL = "http://localhost.tcmb.gov.tr:8085/iskolik";
 
 export async function handleResponse(response) {
-  if (response.ok) return response.json();
-  if (response.status === 400) {
+  if (response.ok) {
+    return response.json();
+  } else if (response.status === 400) {
     // So, a server-side validation error occurred.
     // Server side validation returns a string error message, so parse as text instead of json.
     const error = await response.text();
     throw new Error(error);
   }
-  throw new Error("Network response was not ok: " + response.json);
+
+  throw new Error("İşlem Başarısız: " + response.json);
 }
 
-// In a real app, would likely call an error logging service.
-export function handleError(error) {
-  // eslint-disable-next-line no-console
-  console.error("API call failed. " + error);
-  throw error;
+export function handleError(response) {
+  const responseObject = JSON.parse(response.message);
+  if (responseObject.message) {
+    toast(responseObject.message);
+  } else if (responseObject.messages) {
+    responseObject.messages.map(_message => toast.error(_message.message));
+  } else {
+    console.error(response);
+    toast.error("Bilinmeyen bir hata oluştu");
+  }
 }
