@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
 
-import { IlanListesiTable } from "../../components/Tables";
+import { IlanListesiTable } from "../../kurumsal/ilan/tables/IlanTable.js";
 
 
 

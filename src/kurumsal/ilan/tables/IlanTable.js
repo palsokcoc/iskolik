@@ -1,35 +1,44 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
 import { Nav, Card, Button, Table, Dropdown, ButtonGroup } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Routes } from "../../../routes";
 import IskolikPagination from "../../../common/IskolikPagination.js";
+import { DATE_FORMAT } from "../../../common/globals";
+import moment from "moment-timezone";
+import 'moment/locale/tr';
+moment.locale("tr");
 
-export const KategoriListesiTable = (props) => {
+export const IlanListesiTable = (props) => {
     const TableRow = (props) => {
-        const { kategoriId, ad, aciklama, ataKategori } = props;
-
+        const { ilanId, unvan, yayinTarihi, sonBasvuruTarihi, durum } = props;
         return (
             <tr>
                 <td>
-                    <Card.Link as={Link} to={Routes.MevcutKategori.path + "/" + kategoriId} className="fw-normal">
-                        {kategoriId}
+                    <Card.Link as={Link} to={Routes.MevcutIlan.path + "/" + ilanId} className="fw-normal">
+                        {ilanId}
                     </Card.Link>
                 </td>
                 <td>
                     <span className="fw-normal">
-                        {ad}
+                        {unvan}
                     </span>
                 </td>
                 <td>
                     <span className="fw-normal">
-                        {aciklama}
+                        {moment(yayinTarihi).format(DATE_FORMAT)}
                     </span>
                 </td>
                 <td>
                     <span className="fw-normal">
-                        {ataKategori ? ataKategori.ad : "-"}
+                        {moment(sonBasvuruTarihi).format(DATE_FORMAT)}
+                    </span>
+                </td>
+                <td>
+                    <span className="fw-normal">
+                        {durum}
                     </span>
                 </td>
                 <td>
@@ -40,8 +49,14 @@ export const KategoriListesiTable = (props) => {
                             </span>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item className="text-danger" name={kategoriId} onClick={props.handleDeleteKategori}>
-                                <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> Sil
+                            <Dropdown.Item name={ilanId} onClick={props.handleIlanGoruntule} >
+                                <FontAwesomeIcon icon={faEye} className="me-2" /> Görüntüle
+                            </Dropdown.Item>
+                            <Dropdown.Item name={ilanId} onClick={props.handleIlanYayinla} >
+                                <FontAwesomeIcon icon={faEdit} className="me-2" /> Yayınla
+                            </Dropdown.Item>
+                            <Dropdown.Item className="text-danger" name={ilanId} onClick={props.handleIlanIptalEt} >
+                                <FontAwesomeIcon icon={faTrashAlt} className="me-2" /> İptal Et
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -56,18 +71,19 @@ export const KategoriListesiTable = (props) => {
                 <Table hover className="user-table align-items-center">
                     <thead>
                         <tr>
-                            <th className="border-bottom">No</th>
-                            <th className="border-bottom">Ad</th>
-                            <th className="border-bottom">Açıklama</th>
-                            <th className="border-bottom">Ata Kategori</th>
+                            <th className="border-bottom">İlan No</th>
+                            <th className="border-bottom">Ünvan</th>
+                            <th className="border-bottom">Yayın Tarihi</th>
+                            <th className="border-bottom">Son Başvuru Tarihi</th>
+                            <th className="border-bottom">Durum</th>
                             <th className="border-bottom">İşlem</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.kategoriler.map(t => <TableRow handleDeleteKategori={props.handleDeleteKategori} key={`kategori-${t.kategoriId}`} {...t} />)}
+                        {props.ilanlar.map(t => <TableRow handleIlanIptalEt={props.handleIlanIptalEt} handleIlanYayinla={props.handleIlanYayinla} handleIlanGoruntule={props.handleIlanGoruntule} key={`isIlani-${t.ilanId}`} {...t} />)}
                     </tbody>
                 </Table>
-                <Card.Footer className="px-3 border-0 d-lg-flex align-items-right justify-content-between">
+                <Card.Footer className="px-3 border-0 d-lg-flex align-items-center justify-content-between">
                     <Nav>
                         <IskolikPagination className="mb-2 mb-lg-0" withIcons handlePaginationChange={props.handlePaginationChange}>
                         </IskolikPagination>

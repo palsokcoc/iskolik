@@ -6,6 +6,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // pages
+import YeniIlan from "./kurumsal/ilan/pages/YeniIlan";
+import MevcutIlan from "./kurumsal/ilan/pages/MevcutIlan";
+import IlanListesi from "./kurumsal/ilan/pages/IlanListesi";
+
 import YeniKategori from "./yonetici/kategori/pages/YeniKategori";
 import MevcutKategori from "./yonetici/kategori/pages/MevcutKategori";
 import KategoriListesi from "./yonetici/kategori/pages/KategoriListesi";
@@ -13,13 +17,10 @@ import KategoriListesi from "./yonetici/kategori/pages/KategoriListesi";
 import DashboardOverview from "./pages/dashboard/DashboardOverview";
 import HesapBilgileri from "./pages/HesapBilgileri";
 import Profil from "./pages/Profil";
-import YeniIlan from "./pages/YeniIlan";
-import MevcutIlan from "./pages/MevcutIlan";
 import IlanAra from "./pages/IlanAra";
 import ElemanAra from "./pages/ElemanAra";
 import RaporEnCokArananlar from "./pages/tables/RaporEnCokArananlar";
 import RaporEnCokBulunanlar from "./pages/tables/RaporEnCokBulunanlar";
-import IlanListesi from "./pages/tables/IlanListesi";
 import BasvuruListesi from "./pages/tables/BasvuruListesi";
 import KullaniciGiris from "./pages/KullaniciGiris";
 import KullaniciKayit from "./pages/KullaniciKayit";
