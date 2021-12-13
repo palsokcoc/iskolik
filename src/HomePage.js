@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // pages
 import IlanAra from "./bireysel/ilanArama/pages/ilanAra";
+import BasvuruListesi from "./bireysel/basvuru/pages/BasvuruListesi";
 
 import YeniIlan from "./kurumsal/ilan/pages/YeniIlan";
 import MevcutIlan from "./kurumsal/ilan/pages/MevcutIlan";
@@ -22,7 +23,6 @@ import HesapBilgileri from "./pages/HesapBilgileri";
 import Profil from "./pages/Profil";
 import RaporEnCokArananlar from "./pages/tables/RaporEnCokArananlar";
 import RaporEnCokBulunanlar from "./pages/tables/RaporEnCokBulunanlar";
-import BasvuruListesi from "./pages/tables/BasvuruListesi";
 import KullaniciGiris from "./pages/KullaniciGiris";
 import KullaniciKayit from "./pages/KullaniciKayit";
 import ForgotPassword from "./pages/examples/ForgotPassword";
