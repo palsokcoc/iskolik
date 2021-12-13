@@ -7,17 +7,19 @@ export const DATE_FORMAT = "DD MMMM YYYY";
 export async function handleResponse(response) {
   if (response.ok) {
     return response.json();
-  } else if (response.status === 400) {
+  } else /*if (response.status >= 400 && response.status < 500)*/ {
     // So, a server-side validation error occurred.
     // Server side validation returns a string error message, so parse as text instead of json.
     const error = await response.text();
     throw new Error(error);
   }
 
-  throw new Error("İşlem Başarısız: " + response.json);
+  //debugger;
+  //throw new Error("İşlem Başarısız: " + response.json);
 }
 
 export function handleError(response) {
+  debugger;
   const responseObject = JSON.parse(response.message);
   if (responseObject.message) {
     toast(responseObject.message);
