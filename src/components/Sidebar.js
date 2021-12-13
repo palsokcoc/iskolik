@@ -120,7 +120,7 @@ export default (props = {}) => {
               </CollapsableNavItem>
 
               <NavItem title="Çıkış" link={Routes.KullaniciGiris.path} />
-          </Nav>
+            </Nav>
           </div>
         </SimpleBar>
       </CSSTransition>

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import YeniIlan from "./kurumsal/ilan/pages/YeniIlan";
 import MevcutIlan from "./kurumsal/ilan/pages/MevcutIlan";
 import IlanListesi from "./kurumsal/ilan/pages/IlanListesi";
+import ElemanAra from "./kurumsal/elemanArama/pages/ElemanAra";
 
 import YeniKategori from "./yonetici/kategori/pages/YeniKategori";
 import MevcutKategori from "./yonetici/kategori/pages/MevcutKategori";
@@ -18,7 +19,6 @@ import DashboardOverview from "./pages/dashboard/DashboardOverview";
 import HesapBilgileri from "./pages/HesapBilgileri";
 import Profil from "./pages/Profil";
 import IlanAra from "./pages/IlanAra";
-import ElemanAra from "./pages/ElemanAra";
 import RaporEnCokArananlar from "./pages/tables/RaporEnCokArananlar";
 import RaporEnCokBulunanlar from "./pages/tables/RaporEnCokBulunanlar";
 import BasvuruListesi from "./pages/tables/BasvuruListesi";
@@ -113,6 +113,5 @@ export default () => (
     <RouteWithSidebar exact path={Routes.BasvuruListesi.path} component={BasvuruListesi} />
     <RouteWithSidebar exact path={Routes.KategoriListesi.path} component={KategoriListesi} />
 
-    <Redirect to={Routes.NotFound.path} />
   </Switch>
 );

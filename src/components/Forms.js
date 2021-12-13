@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Card, Form, Button, InputGroup } from '@themesberg/react-bootstrap';
 import 'moment/locale/tr';
-import { ElemanAramaSonucuTable, SertifikaListesiTable, SinavSonuclariTable, YetenekListesiTable } from "../components/Tables";
+import { SertifikaListesiTable, SinavSonuclariTable, YetenekListesiTable } from "../components/Tables";
 
 export const HesapBilgileriForm = () => {
   const [birthday, setBirthday] = useState("");

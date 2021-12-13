@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, InputGroup, Row, Button } from '@themesberg/react-bootstrap';
+import { InputGroup, Button } from '@themesberg/react-bootstrap';
 import { faHome, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Breadcrumb } from '@themesberg/react-bootstrap';
 import { Form } from '@themesberg/react-bootstrap';
-import { ElemanAramaSonucuTable } from "../components/Tables";
+import { ElemanAramaSonucuTable } from "../tables/ElemanAramaTable.js";
+import * as elemanAramaApi from "../api/elamanAramaApi.js";
+import { Routes } from "../../../routes.js";
 
-export default () => {
+export default (props) => {
+  const [elemanlar, setElemanlar] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    elemanAramaApi.getElemanlar(filter, pageNumber).then((_elemanlar) => {
+      setElemanlar(_elemanlar.data);
+    });
+  }, [filter, pageNumber]);
+
+  function handleProfilGoruntule(event) {
+    return props.history.push(Routes.Profil.path + "/" + event.target.name);
+  }
+
+  function handlePaginationChange(pageNumber) {
+    setPageNumber(pageNumber);
+  }
+
+  function handleFormSubmit() {
+    setFilter(document.getElementById("arama").value);
+  }
+
   return (
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -21,10 +45,10 @@ export default () => {
       </div>
 
       <div className="d-flex align-items-center">
-        <Form className="navbar-search">
+        <Form className="navbar-search" onSubmit={handleFormSubmit}>
           <InputGroup className="input-group-merge search-bar">
             <InputGroup.Text><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
-            <Form.Control type="text" placeholder="Ara" />
+            <Form.Control type="text" placeholder="Ara" id="arama" />
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Button variant="primary" type="submit">Ara</Button>
           </InputGroup>
@@ -33,7 +57,7 @@ export default () => {
 
       <p />
 
-      <ElemanAramaSonucuTable />
+      <ElemanAramaSonucuTable elemanlar={elemanlar} handleProfilGoruntule={handleProfilGoruntule} handlePaginationChange={handlePaginationChange} />
     </>
   );
 };
