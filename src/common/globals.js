@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import moment from 'moment';
 
-export const BACKEND_BASE_URL = "http://localhost.tcmb.gov.tr:8085/iskolik";
+export const BACKEND_BASE_URL = "http://127.0.0.1:8085/iskolik";
 export const DATE_FORMAT = "DD MMMM YYYY";
 export const ISO_DATE_FORMAT = "YYYY-MM-DD";
 

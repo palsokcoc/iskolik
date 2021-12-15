@@ -16,6 +16,7 @@ export default () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [ilkTarih, setIlkTarih] = useState("");
   const [sonTarih, setSonTarih] = useState("");
+  const [pdfUrl, setPdfUrl] = useState("");
 
   useEffect(() => {
     raporApi.getEnCokArananOzellikler(ilkTarih, sonTarih, pageNumber).then((_ozellikler) => {
@@ -40,6 +41,10 @@ export default () => {
       setOzellikler(_ozellikler.data);
     });
   }
+
+  function handlePDFGoster() {
+    raporApi.openEnCokArananOzelliklerRaporu(ilkTarih, sonTarih, pageNumber);
+  };
 
   return (
     <>
@@ -113,11 +118,12 @@ export default () => {
               <Button variant="tertiary" type="submit" >Ara</Button>
             </Col>
             <Col md={1} className="mb-3">
-              <Button variant="tertiary" onClick={handleAramaYap}>PDF</Button>
+              <Button variant="tertiary" onClick={handlePDFGoster}>PDF</Button>
             </Col>
           </Row>
         </Form>
       </div>
+
 
       <EnCokArananOzelliklerTable ozellikler={ozellikler} handlePaginationChange={handlePaginationChange} pageNumber={pageNumber} />
     </>

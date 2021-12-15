@@ -41,6 +41,10 @@ export default () => {
     });
   }
 
+  function handlePDFGoster() {
+    raporApi.openEnCokBasvuruYapilanIlanlarRaporu(ilkTarih, sonTarih, pageNumber);
+  };
+
   return (
     <>
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -113,7 +117,7 @@ export default () => {
               <Button variant="tertiary" type="submit" >Ara</Button>
             </Col>
             <Col md={1} className="mb-3">
-              <Button variant="tertiary" onClick={handleAramaYap}>PDF</Button>
+              <Button variant="tertiary" onClick={handlePDFGoster}>PDF</Button>
             </Col>
           </Row>
         </Form>
