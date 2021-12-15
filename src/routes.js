@@ -11,7 +11,7 @@ export const Routes = {
   YeniKategori: { path: "/yeniKategori" },
   MevcutKategori: { path: "/mevcutKategori" },
   RaporEnCokArananOzellikler: { path: "/tables/enCokArananOzellikler" },
-  RaporEnCokBulunanlar: { path: "/raporEnCokBulunanlar" },
+  RaporEnCokBasvuruYapilanIlanlar: { path: "/enCokBasvuruYapilanIlanlar" },
   IlanListesi: { path: "/tables/ilanListesi" },
   BasvuruListesi: { path: "/tables/basvuruListesi" },
   KategoriListesi: { path: "/tables/kategoriListesi" },

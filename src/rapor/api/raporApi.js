@@ -7,7 +7,7 @@ export function getEnCokArananOzellikler(ilkTarih, sonTarih, pageNumber) {
 }
 
 export function getEnCokBasvuruYapilanIlanlar(ilkTarih, sonTarih, pageNumber) {
-    return fetch(BACKEND_BASE_URL + "/ilan/en-cok-basvuru-yapilan-ilanlar?sort=adet,desc" + (pageNumber && ("&page=" + (pageNumber - 1))) + (ilkTarih && ("&ilkTarih=" + ilkTarih)) + (sonTarih && ("&sonTarih=" + sonTarih)))
+    return fetch(BACKEND_BASE_URL + "/rapor/en-cok-basvuru-yapilan-ilanlar" + (pageNumber && ("?page=" + (pageNumber - 1))) + (ilkTarih && ("&ilkTarih=" + ilkTarih)) + (sonTarih && ("&sonTarih=" + sonTarih)))
         .then(handleResponse)
         .catch(handleError);
 }

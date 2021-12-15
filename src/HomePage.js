@@ -19,12 +19,12 @@ import MevcutKategori from "./yonetici/kategori/pages/MevcutKategori";
 import KategoriListesi from "./yonetici/kategori/pages/KategoriListesi";
 
 import RaporEnCokArananOzellikler from "./rapor/pages/EnCokArananOzelliklerRaporu";
+import RaporEnCokBasvuruYapilanIlanlar from "./rapor/pages/EnCokBasvuruYapilanIlanlar";
 
 
 import DashboardOverview from "./pages/dashboard/DashboardOverview";
 import HesapBilgileri from "./pages/HesapBilgileri";
 import Profil from "./pages/Profil";
-import RaporEnCokBulunanlar from "./pages/tables/RaporEnCokBulunanlar";
 import KullaniciGiris from "./pages/KullaniciGiris";
 import KullaniciKayit from "./pages/KullaniciKayit";
 import ForgotPassword from "./pages/examples/ForgotPassword";
@@ -111,7 +111,7 @@ export default () => (
     <RouteWithSidebar exact path={Routes.YeniKategori.path} component={YeniKategori} />
     <RouteWithSidebar exact path={Routes.MevcutKategori.path + "/:kategoriId"} component={MevcutKategori} />
     <RouteWithSidebar exact path={Routes.RaporEnCokArananOzellikler.path} component={RaporEnCokArananOzellikler} />
-    <RouteWithSidebar exact path={Routes.RaporEnCokBulunanlar.path} component={RaporEnCokBulunanlar} />
+    <RouteWithSidebar exact path={Routes.RaporEnCokBasvuruYapilanIlanlar.path} component={RaporEnCokBasvuruYapilanIlanlar} />
     <RouteWithSidebar exact path={Routes.IlanListesi.path} component={IlanListesi} />
     <RouteWithSidebar exact path={Routes.BasvuruListesi.path} component={BasvuruListesi} />
     <RouteWithSidebar exact path={Routes.KategoriListesi.path} component={KategoriListesi} />

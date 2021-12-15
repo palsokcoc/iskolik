@@ -116,7 +116,7 @@ export default (props = {}) => {
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="raporlar/" title="Raporlar" icon={faTable}>
                 <NavItem title="Aranan Özellikler" link={Routes.RaporEnCokArananOzellikler.path} />
-                <NavItem title="Başvuru Yapılan İlanlar" link={Routes.RaporEnCokBulunanlar.path} />
+                <NavItem title="Başvuru Yapılan İlanlar" link={Routes.RaporEnCokBasvuruYapilanIlanlar.path} />
               </CollapsableNavItem>
 
               <NavItem title="Çıkış" link={Routes.KullaniciGiris.path} />
