@@ -6,7 +6,7 @@ import 'moment/locale/tr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { InputGroup } from '@themesberg/react-bootstrap';
-import { isValidDate } from "../../../common/globals.js";
+import { isTodayOrFutureDate } from "../../../common/globals.js";
 
 moment.locale("tr");
 
@@ -166,7 +166,7 @@ const IlanForm = (props) => {
             <Col md={6} className="mb-3">
               <Form.Group id="yayinTarihi">
                 <Datetime
-                  isValidDate={isValidDate}
+                  isValidDate={isTodayOrFutureDate}
                   locale="tr"
                   timeFormat={false}
                   onChange={props.handleChangeYayinTarihi}
@@ -196,7 +196,7 @@ const IlanForm = (props) => {
             <Col md={6} className="mb-3">
               <Form.Group id="sonBasvuruTarihi">
                 <Datetime
-                  isValidDate={isValidDate}
+                  isValidDate={isTodayOrFutureDate}
                   locale="tr"
                   timeFormat={false}
                   onChange={props.handleChangeSonBasvuruTarihi}

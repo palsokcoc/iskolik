@@ -18,7 +18,7 @@ export function saveIlan(ilan) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
             ...ilan,
-            kullanici: { type: "Kurumsal", kullaniciId: 11 },
+            kullanici: { tip: "Kurumsal", kullaniciId: 11 },
             // Parse authorId to a number (in case it was sent as a string).
             ilanId: parseInt(ilan.ilanId, 10),
         })

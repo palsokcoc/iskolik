@@ -3,6 +3,7 @@ import moment from 'moment';
 
 export const BACKEND_BASE_URL = "http://localhost.tcmb.gov.tr:8085/iskolik";
 export const DATE_FORMAT = "DD MMMM YYYY";
+export const ISO_DATE_FORMAT = "YYYY-MM-DD";
 
 export async function handleResponse(response) {
   if (response.ok) {
@@ -41,9 +42,16 @@ export function fixTimeZoneOffset(date) {
   return new Date(_date.getTime() - (_date.getTimezoneOffset() * 60000));
 }
 
-export function isValidDate(date) {
+export function isTodayOrFutureDate(date) {
   if (!date)
     return false;
   const yesterday = moment().subtract(1, 'day');
   return date.isAfter(yesterday);
+}
+
+export function isTodayOrPastDate(date) {
+  if (!date)
+    return false;
+  const tomorrow = moment().add(1, 'day');
+  return date.isBefore(tomorrow);
 }
